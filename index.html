@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arctic Luxury — Premium Fashion</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #111317;
+      color: #FFFFFF;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #111317;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #D7DDE5;
+      border-radius: 10px;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 24px 48px;
+      background: transparent;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+
+    nav.scrolled {
+      background: rgba(32, 36, 43, 0.7);
+      backdrop-filter: blur(25px);
+      padding: 16px 48px;
+      border-bottom: 1px solid rgba(215, 221, 229, 0.1);
+    }
+
+    .logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 24px;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      color: #FFFFFF;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+    }
+
+    .nav-menu a {
+      text-decoration: none;
+      color: #B7C0CC;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-menu a:hover {
+      color: #CFEFFF;
+    }
+
+    .nav-icons {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .icon-btn {
+      background: none;
+      border: none;
+      color: #FFFFFF;
+      cursor: pointer;
+      font-size: 20px;
+      transition: color 0.2s;
+    }
+
+    .icon-btn:hover {
+      color: #CFEFFF;
+    }
+
+    .glyphicon {
+      font-size: 18px;
+      display: inline-block;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: #FFFFFF;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #111317 0%, #1A1D23 100%);
+      padding: 120px 48px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      max-width: 1200px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .hero-text h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 72px;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+
+    .hero-text h1 span {
+      color: #CFEFFF;
+    }
+
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #D7DDE5;
+      margin-bottom: 24px;
+    }
+
+    .hero-label::before {
+      content: "✦";
+    }
+
+    .hero-text p {
+      font-size: 18px;
+      color: #B7C0CC;
+      max-width: 500px;
+      margin-bottom: 32px;
+      line-height: 1.8;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 14px 32px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .btn-primary {
+      background: #D7DDE5;
+      color: #111317;
+    }
+
+    .btn-primary:hover {
+      background: #CFEFFF;
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid #D7DDE5;
+      color: #D7DDE5;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(215, 221, 229, 0.1);
+    }
+
+    .hero-image {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .product-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(25px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 48px;
+      text-align: center;
+      aspect-ratio: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: scale(1.05);
+    }
+
+    .product-card p {
+      font-size: 48px;
+      font-family: 'Bebas Neue', sans-serif;
+      color: #D7DDE5;
+      margin-bottom: 16px;
+    }
+
+    .product-card span {
+      font-size: 12px;
+      color: #B7C0CC;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* Featured Section */
+    .section {
+      padding: 96px 48px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 48px;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      margin-bottom: 16px;
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #D7DDE5;
+      margin-bottom: 24px;
+    }
+
+    .section-label::before {
+      content: "✦";
+    }
+
+    .section-desc {
+      font-size: 18px;
+      color: #B7C0CC;
+      max-width: 600px;
+      margin-bottom: 56px;
+      line-height: 1.8;
+    }
+
+    /* Product Grid */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px;
+      margin-bottom: 48px;
+    }
+
+    .product-item {
+      position: relative;
+      cursor: pointer;
+      group: product;
+    }
+
+    .product-image {
+      width: 100%;
+      aspect-ratio: 1;
+      background: linear-gradient(135deg, rgba(215, 221, 229, 0.1) 0%, #20242B 100%);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .product-item:hover .product-image {
+      background: linear-gradient(135deg, rgba(215, 221, 229, 0.2) 0%, #1A1D23 100%);
+      transform: scale(1.03);
+    }
+
+    .product-image-inner {
+      font-size: 64px;
+      font-family: 'Bebas Neue', sans-serif;
+      color: #D7DDE5;
+    }
+
+    .product-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+
+    .product-collection {
+      font-size: 11px;
+      color: #B7C0CC;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .product-price {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      color: #D7DDE5;
+    }
+
+    .view-all {
+      text-align: center;
+    }
+
+    /* Editorial Section */
+    .editorial {
+      background: linear-gradient(135deg, #111317 0%, #1A1D23 100%);
+      padding: 120px 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .editorial-text h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 56px;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+
+    .editorial-text h2 span {
+      color: #CFEFFF;
+    }
+
+    .editorial-text p {
+      font-size: 18px;
+      color: #B7C0CC;
+      margin-bottom: 32px;
+      max-width: 500px;
+      line-height: 1.8;
+    }
+
+    .editorial-image {
+      width: 100%;
+      aspect-ratio: 1;
+      background: linear-gradient(135deg, rgba(215, 221, 229, 0.2) 0%, #20242B 100%);
+      border-radius: 8px;
+    }
+
+    /* Footer */
+    footer {
+      background: #111317;
+      border-top: 1px solid rgba(215, 221, 229, 0.1);
+      padding: 64px 48px 32px;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+
+    .footer-col h4 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      margin-bottom: 24px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 12px;
+    }
+
+    .footer-col ul li a {
+      text-decoration: none;
+      color: #B7C0CC;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+
+    .footer-col ul li a:hover {
+      color: #CFEFFF;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(215, 221, 229, 0.1);
+      padding-top: 24px;
+      text-align: center;
+      color: #B7C0CC;
+      font-size: 12px;
+    }
+
+    /* Product Detail Page */
+    .pdp-container {
+      display: none;
+      min-height: 100vh;
+      padding: 120px 48px 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .pdp-container.active {
+      display: grid;
+    }
+
+    .pdp-gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .pdp-image {
+      width: 100%;
+      aspect-ratio: 1;
+      background: linear-gradient(135deg, rgba(215, 221, 229, 0.15) 0%, #20242B 100%);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 80px;
+      font-family: 'Bebas Neue', sans-serif;
+      color: #D7DDE5;
+    }
+
+    .pdp-thumbnails {
+      display: flex;
+      gap: 12px;
+    }
+
+    .pdp-thumb {
+      width: 80px;
+      height: 80px;
+      background: #20242B;
+      border: 1px solid rgba(215, 221, 229, 0.2);
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #D7DDE5;
+    }
+
+    .pdp-thumb:hover {
+      border-color: #D7DDE5;
+    }
+
+    .pdp-info h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 40px;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .pdp-collection {
+      font-size: 11px;
+      color: #B7C0CC;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .pdp-price {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 36px;
+      color: #D7DDE5;
+      margin-bottom: 24px;
+    }
+
+    .pdp-section {
+      margin-bottom: 32px;
+    }
+
+    .pdp-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #D7DDE5;
+      margin-bottom: 12px;
+    }
+
+    .color-swatches {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .color-swatch {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .color-swatch:hover {
+      transform: scale(1.1);
+    }
+
+    .color-swatch.active {
+      border-color: #CFEFFF;
+    }
+
+    .size-buttons {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .size-btn {
+      padding: 12px 0;
+      background: transparent;
+      border: 1px solid rgba(215, 221, 229, 0.3);
+      color: #FFFFFF;
+      cursor: pointer;
+      border-radius: 4px;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .size-btn:hover {
+      border-color: #D7DDE5;
+    }
+
+    .size-btn.active {
+      background: #D7DDE5;
+      color: #111317;
+      border-color: #D7DDE5;
+    }
+
+    .quantity-control {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 32px;
+    }
+
+    .qty-btn {
+      width: 40px;
+      height: 40px;
+      background: #20242B;
+      border: 1px solid rgba(215, 221, 229, 0.2);
+      color: #FFFFFF;
+      cursor: pointer;
+      border-radius: 4px;
+      font-size: 18px;
+      transition: all 0.2s;
+    }
+
+    .qty-btn:hover {
+      background: #D7DDE5;
+      color: #111317;
+    }
+
+    .qty-display {
+      font-size: 18px;
+      font-weight: 600;
+      width: 60px;
+      text-align: center;
+    }
+
+    .pdp-buttons {
+      display: flex;
+      gap: 12px;
+      flex-direction: column;
+    }
+
+    .pdp-buttons .btn {
+      width: 100%;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav {
+        padding: 16px 24px;
+      }
+
+      nav.scrolled {
+        padding: 12px 24px;
+      }
+
+      .nav-menu {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .hero-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .hero-text h1 {
+        font-size: 48px;
+      }
+
+      .section {
+        padding: 60px 24px;
+      }
+
+      .section-title {
+        font-size: 36px;
+      }
+
+      .editorial {
+        grid-template-columns: 1fr;
+        padding: 60px 24px;
+      }
+
+      .editorial-text h2 {
+        font-size: 40px;
+      }
+
+      .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+      }
+
+      .pdp-container {
+        grid-template-columns: 1fr;
+        padding: 100px 24px 60px;
+      }
+
+      .product-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav id="navbar">
+  <a href="#" class="logo" onclick="showHome()">ARCTIC</a>
+  <ul class="nav-menu">
+    <li><a href="#" onclick="showHome()">HOME</a></li>
+    <li><a href="#" onclick="scrollTo('featured')">SHOP</a></li>
+    <li><a href="#featured">COLLECTIONS</a></li>
+    <li><a href="#">ABOUT</a></li>
+  </ul>
+  <div class="nav-icons">
+    <button class="icon-btn"><span class="glyphicon glyphicon-search"></span></button>
+    <button class="icon-btn"><span class="glyphicon glyphicon-heart"></span></button>
+    <button class="icon-btn"><span class="glyphicon glyphicon-shopping-cart"></span></button>
+    <button class="menu-toggle" onclick="toggleMenu()"><span class="glyphicon glyphicon-menu-hamburger"></span></button>
+  </div>
+</nav>
+
+<!-- Home View -->
+<div id="homeView">
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-label">NEW COLLECTION</div>
+        <h1>COLLECTION<br><span>ARCTIC</span><br>2026</h1>
+        <p>Designed for winter movement. Premium materials, minimalist design, and futuristic silhouettes for the modern arctic explorer.</p>
+        <div class="hero-buttons">
+          <button class="btn btn-primary" onclick="scrollTo('featured')">SHOP COLLECTION</button>
+          <button class="btn btn-secondary">VIEW LOOKBOOK</button>
+        </div>
+      </div>
+      <div class="hero-image">
+        <div class="product-card">
+          <p><span class="glyphicon glyphicon-cloud" style="font-size: 48px;"></span></p>
+          <span>Premium Collection</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Products -->
+  <section id="featured" class="section">
+    <div class="section-label">FEATURED</div>
+    <h2 class="section-title">FEATURED COLLECTION</h2>
+    <p class="section-desc">Explore our most-loved pieces from the arctic luxury collection</p>
+    
+    <div class="product-grid">
+      <div class="product-item" onclick="viewProduct('ARCTIC SHELL', 599)">
+        <div class="product-image">
+          <div class="product-image-inner">A</div>
+        </div>
+        <div class="product-collection">WINTER 2026</div>
+        <div class="product-name">ARCTIC SHELL</div>
+        <div class="product-price">R599</div>
+      </div>
+
+      <div class="product-item" onclick="viewProduct('VOID JACKET', 749)">
+        <div class="product-image">
+          <div class="product-image-inner">V</div>
+        </div>
+        <div class="product-collection">CORE</div>
+        <div class="product-name">VOID JACKET</div>
+        <div class="product-price">R749</div>
+      </div>
+
+      <div class="product-item" onclick="viewProduct('SHADOW PANTS', 349)">
+        <div class="product-image">
+          <div class="product-image-inner">S</div>
+        </div>
+        <div class="product-collection">ESSENTIAL</div>
+        <div class="product-name">SHADOW PANTS</div>
+        <div class="product-price">R349</div>
+      </div>
+
+      <div class="product-item" onclick="viewProduct('LIGHT LAYER', 249)">
+        <div class="product-image">
+          <div class="product-image-inner">L</div>
+        </div>
+        <div class="product-collection">BASE</div>
+        <div class="product-name">LIGHT LAYER</div>
+        <div class="product-price">R249</div>
+      </div>
+
+      <div class="product-item" onclick="viewProduct('FROST BOOTS', 499)">
+        <div class="product-image">
+          <div class="product-image-inner">F</div>
+        </div>
+        <div class="product-collection">FOOTWEAR</div>
+        <div class="product-name">FROST BOOTS</div>
+        <div class="product-price">R499</div>
+      </div>
+
+      <div class="product-item" onclick="viewProduct('GLACIER GLOVES', 199)">
+        <div class="product-image">
+          <div class="product-image-inner">G</div>
+        </div>
+        <div class="product-collection">ACCESSORIES</div>
+        <div class="product-name">GLACIER GLOVES</div>
+        <div class="product-price">R199</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Editorial -->
+  <section class="editorial">
+    <div class="editorial-text">
+      <div class="section-label">EDITORIAL</div>
+      <h2>Designed for<br><span>Winter Movement</span></h2>
+      <p>Explore the intersection of form and function. Our latest collection reimagines arctic exploration wear for the modern minimalist.</p>
+      <button class="btn btn-primary">EXPLORE COLLECTION</button>
+    </div>
+    <div class="editorial-image"></div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h4>ARCTIC</h4>
+        <p style="color: #B7C0CC; font-size: 14px; line-height: 1.8;">Premium luxury fashion for the modern explorer. Designed in minimal, built for life.</p>
+      </div>
+      <div class="footer-col">
+        <h4>SHOP</h4>
+        <ul>
+          <li><a href="#">New Arrivals</a></li>
+          <li><a href="#">Collections</a></li>
+          <li><a href="#">Limited Edition</a></li>
+          <li><a href="#">Sale</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>COMPANY</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Sustainability</a></li>
+          <li><a href="#">Press</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>SUPPORT</h4>
+        <ul>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Shipping Info</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 ARCTIC LUXURY FASHION. ALL RIGHTS RESERVED.
+    </div>
+  </footer>
+</div>
+
+<!-- Product Detail Page -->
+<div id="pdpView" class="pdp-container">
+  <div class="pdp-gallery">
+    <div class="pdp-image" id="mainImage">A</div>
+    <div class="pdp-thumbnails">
+      <div class="pdp-thumb" onclick="changeImage(this)">A</div>
+      <div class="pdp-thumb" onclick="changeImage(this)">B</div>
+      <div class="pdp-thumb" onclick="changeImage(this)">C</div>
+      <div class="pdp-thumb" onclick="changeImage(this)">D</div>
+    </div>
+  </div>
+
+  <div class="pdp-info">
+    <div class="pdp-collection" id="pdpCollection">WINTER 2026</div>
+    <h1 id="pdpTitle">ARCTIC SHELL PUFFER</h1>
+    <div class="pdp-price" id="pdpPrice">$599</div>
+
+    <div class="pdp-section">
+      <div class="pdp-label">COLOR</div>
+      <div class="color-swatches">
+        <div class="color-swatch active" style="background: #D7DDE5;" onclick="selectColor(this)"></div>
+        <div class="color-swatch" style="background: #20242B;" onclick="selectColor(this)"></div>
+        <div class="color-swatch" style="background: #CFEFFF;" onclick="selectColor(this)"></div>
+      </div>
+    </div>
+
+    <div class="pdp-section">
+      <div class="pdp-label">SIZE</div>
+      <div class="size-buttons">
+        <button class="size-btn" onclick="selectSize(this)">XS</button>
+        <button class="size-btn" onclick="selectSize(this)">S</button>
+        <button class="size-btn active" onclick="selectSize(this)">M</button>
+        <button class="size-btn" onclick="selectSize(this)">L</button>
+        <button class="size-btn" onclick="selectSize(this)">XL</button>
+        <button class="size-btn" onclick="selectSize(this)">XXL</button>
+      </div>
+    </div>
+
+    <div class="pdp-section">
+      <div class="pdp-label">QUANTITY</div>
+      <div class="quantity-control">
+        <button class="qty-btn" onclick="decreaseQty()">−</button>
+        <div class="qty-display" id="qtyDisplay">1</div>
+        <button class="qty-btn" onclick="increaseQty()">+</button>
+      </div>
+    </div>
+
+    <div class="pdp-buttons">
+      <button class="btn btn-primary" onclick="addToCart()">ADD TO BAG</button>
+      <button class="btn btn-secondary" onclick="toggleWishlist()">ADD TO WISHLIST</button>
+    </div>
+
+    <div style="margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(215, 221, 229, 0.1);">
+      <p style="font-size: 14px; color: #B7C0CC; line-height: 1.8;">
+        <strong style="color: #D7DDE5;">✓ Waterproof</strong> • Premium protection<br>
+        <strong style="color: #D7DDE5;">✓ Windproof</strong> • Advanced tech<br>
+        <strong style="color: #D7DDE5;">✓ Lightweight</strong> • Minimal weight<br>
+        <strong style="color: #D7DDE5;">✓ Insulated</strong> • Thermal support
+      </p>
+    </div>
+
+    <button class="btn btn-secondary" style="width: 100%; margin-top: 24px;" onclick="showHome()">BACK TO SHOP</button>
+  </div>
+</div>
+
+<script>
+  let quantity = 1;
+  let currentProduct = { title: '', price: 0 };
+
+  // Navbar scroll effect
+  window.addEventListener('scroll', () => {
+    const navbar = document.getElementById('navbar');
+    if (window.scrollY > 50) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  });
+
+  // Product view functions
+  function viewProduct(title, price) {
+    document.getElementById('homeView').style.display = 'none';
+    document.getElementById('pdpView').classList.add('active');
+    document.getElementById('pdpTitle').textContent = title;
+    document.getElementById('pdpPrice').textContent = `$${price}`;
+    currentProduct = { title, price };
+    quantity = 1;
+    document.getElementById('qtyDisplay').textContent = quantity;
+    window.scrollTo(0, 0);
+  }
+
+  function showHome() {
+    document.getElementById('homeView').style.display = 'block';
+    document.getElementById('pdpView').classList.remove('active');
+    window.scrollTo(0, 0);
+  }
+
+  // Product interaction functions
+  function changeImage(thumb) {
+    document.getElementById('mainImage').textContent = thumb.textContent;
+  }
+
+  function selectColor(swatch) {
+    document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
+    swatch.classList.add('active');
+  }
+
+  function selectSize(btn) {
+    document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+
+  function increaseQty() {
+    quantity++;
+    document.getElementById('qtyDisplay').textContent = quantity;
+  }
+
+  function decreaseQty() {
+    if (quantity > 1) {
+      quantity--;
+      document.getElementById('qtyDisplay').textContent = quantity;
+    }
+  }
+
+  function addToCart() {
+    alert(`Added ${quantity}x ${currentProduct.title} to cart!`);
+  }
+
+  function toggleWishlist() {
+    alert(`Added to wishlist!`);
+  }
+
+  function scrollTo(id) {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  function toggleMenu() {
+    const menu = document.querySelector('.nav-menu');
+    menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+  }
+</script>
+
+</body>
+</html>
